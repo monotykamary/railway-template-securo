@@ -5,9 +5,10 @@ server {
     index index.html;
 
     # API proxy to backend over Railway private networking.
-    # Railway does not provide Docker's embedded DNS (127.0.0.11); use
-    # public resolvers as the platform bridges internal DNS through them.
-    resolver 8.8.8.8 8.8.4.4 valid=10s ipv6=off;
+    # Railway's private DNS (.railway.internal) is served by the platform
+    # resolver at fd12::10; public resolvers cannot see it. Resolve at
+    # request time so backend redeploys with new IPs keep working.
+    resolver fd12::10 valid=10s ipv6=on ipv4=on;
     set $upstream ${BACKEND_URL};
     location /api/ {
         proxy_pass $upstream;
