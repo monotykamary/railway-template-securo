@@ -16,13 +16,15 @@ Securo is an open-source, self-hosted personal finance manager focused on privac
 
 ### Deployment Dependencies
 
-The template creates six Railway resources: the public `frontend` service, private `backend`, `celery-worker`, and `celery-beat` services, a Redis service, and a PostgreSQL service with a persistent volume. The backend owns a volume for transaction attachments and runs Alembic migrations at startup.
+The template creates six Railway resources: the public `frontend` service, private `backend`, `celery-worker`, and `celery-beat` services, a Redis service, and a PostgreSQL service with a persistent volume. The backend owns a volume for transaction attachments.
 
 ### Implementation Details
 
-The `frontend` service owns the public HTTPS domain and serves the React SPA, proxying `/api/*` to `backend` over Railway private networking. The backend runs `alembic upgrade head` before starting Uvicorn, so the database schema is always current. `celery-beat` dispatches recurring jobs (bank syncs, recurring transactions, asset prices, FX rates) to `celery-worker`; both use the same backend image and Redis broker.
+The `frontend` service owns the public HTTPS domain and serves the React SPA, proxying `/api/*` to `backend` over Railway private networking. The backend runs `alembic upgrade head` in the background while Uvicorn binds its port immediately, so first-boot database migrations never delay startup and the schema is always current. `celery-beat` dispatches recurring jobs (bank syncs, recurring transactions, asset prices, FX rates) to `celery-worker`; both use the same backend image and Redis broker.
 
-Generated service variables: `SECRET_KEY`, the Postgres password (`POSTGRES_PASSWORD`), and Redis password. The first administrator is created through the in-app setup flow ("Create admin account") at the public URL.
+Redis runs with `--requirepass` driven by a generated `REDIS_PASSWORD` (its start command is shell-wrapped so the variable expands reliably), and `REDIS_URL` references that same secret across the backend, worker, and beat services.
+
+Generated service variables: `SECRET_KEY`, the Postgres password (`POSTGRES_PASSWORD`), and the Redis password (`REDIS_PASSWORD`). The first administrator is created through the in-app setup flow ("Create admin account") at the public URL.
 
 Do not change cross-service references independently — `DATABASE_URL`, `REDIS_URL`, and `BACKEND_URL` are wired to private service names and generated secrets.
 
