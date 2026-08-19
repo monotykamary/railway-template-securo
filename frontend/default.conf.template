@@ -8,7 +8,7 @@ server {
     # Railway's private DNS (.railway.internal) is served by the platform
     # resolver at fd12::10 (port 53). Public resolvers cannot see it.
     # Resolve at request time so backend redeploys with new IPs keep working.
-    resolver fd12::10:53 valid=10s ipv6=on;
+    resolver [fd12::10]:53 valid=10s ipv6=on;
     set $upstream ${BACKEND_URL};
     location /api/ {
         proxy_pass $upstream;
