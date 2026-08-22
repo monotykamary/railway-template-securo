@@ -6,7 +6,7 @@ A pinned Railway deployment for [Securo](https://github.com/securo-finance/secur
 
 ## What this deploys
 
-- Securo `0.14.2` (pinned: [backend](https://github.com/securo-finance/securo/releases/tag/v0.14.2), [frontend](https://github.com/securo-finance/securo/releases/tag/v0.14.2))
+- Securo `0.14.3` (pinned: [backend](https://github.com/securo-finance/securo/releases/tag/v0.14.3), [frontend](https://github.com/securo-finance/securo/releases/tag/v0.14.3))
 - PostgreSQL 18 with pgvector (Railway's SSL-enabled Postgres image)
 - Redis `8-alpine`
 - A Railway volume for transaction attachments
@@ -39,5 +39,5 @@ See [`versions.env`](versions.env). Every production image is pinned by version 
 ## Upstream and license
 
 - Source: https://github.com/securo-finance/securo
-- Release: https://github.com/securo-finance/securo/releases/tag/v0.14.2
+- Release: https://github.com/securo-finance/securo/releases/tag/v0.14.3
 - License: AGPL-3.0; see [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE)

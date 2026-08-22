@@ -2,7 +2,7 @@
 
 ## About Hosting Securo
 
-Securo is an open-source, self-hosted personal finance manager focused on privacy and ownership of financial data. This template deploys the stable release `0.14.2` with durable PostgreSQL (including pgvector), Redis-backed task queues, and persistent attachment storage.
+Securo is an open-source, self-hosted personal finance manager focused on privacy and ownership of financial data. This template deploys the stable release `0.14.3` with durable PostgreSQL (including pgvector), Redis-backed task queues, and persistent attachment storage.
 
 ## Common Use Cases
 
