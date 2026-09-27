@@ -1,4 +1,4 @@
-FROM ghcr.io/securo-finance/securo-frontend:0.16.0@sha256:16836a8714e32cf8880969ccee5c865b569e923ee2b96fc8c994f1b2597e4bd7
+FROM ghcr.io/securo-finance/securo-frontend:0.16.2@sha256:bf77cbbfc696b39d59ccf524ced75a927301eafe51cc5084abf570ee908b1685
 
 LABEL org.opencontainers.image.source="https://github.com/monotykamary/railway-template-securo"
 LABEL org.opencontainers.image.version="0.16.0-securo.1"
