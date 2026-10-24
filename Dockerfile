@@ -1,7 +1,7 @@
-FROM ghcr.io/securo-finance/securo-frontend:0.16.4@sha256:680635760351f8b51be958d3b2c1cf4392240b1dc53aad281febd5105f466f2b
+FROM ghcr.io/securo-finance/securo-frontend:0.16.5@sha256:f219eb542db83ffd49c9d1a322c5401c52eb81b274fe31243c2bd2b38f714353
 
 LABEL org.opencontainers.image.source="https://github.com/monotykamary/railway-template-securo"
-LABEL org.opencontainers.image.version="0.16.4-securo.1"
+LABEL org.opencontainers.image.version="0.16.5-securo.1"
 LABEL org.opencontainers.image.licenses="AGPL-3.0"
 
 # Railway adapter: the upstream image ships Docker's 127.0.0.11 resolver in
